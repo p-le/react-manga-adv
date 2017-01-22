@@ -50,9 +50,61 @@ export default function createRoutes(store) {
       path: '/manga',
       name: 'manga',
       getComponent(nextState, cb) {
-        import('containers/MangaPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+        const importModules = Promise.all([
+          import('containers/MangaPage/reducer'),
+          import('containers/MangaPage/sagas'),
+          import('containers/MangaPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('manga', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/manga/:mangaName',
+      name: 'chooseManga',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MangaPage/reducer'),
+          import('containers/MangaPage/sagas'),
+          import('containers/MangaPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('manga', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/manga/:mangaName/:chapterName',
+      name: 'chooseChapter',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MangaPage/reducer'),
+          import('containers/MangaPage/sagas'),
+          import('containers/MangaPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('manga', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
     }, {
       path: '*',

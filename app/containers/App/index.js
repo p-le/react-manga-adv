@@ -1,47 +1,38 @@
-/**
- *
- * App
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- */
-
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-
+import { connect } from 'react-redux';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
-import withProgressBar from 'components/ProgressBar';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { openSearch } from './actions';
+import muiTheme from './mui-theme';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
-  min-height: 100%;
   flex-direction: column;
+  max-width: 100%;
+  flex: 1;
 `;
 
 export function App(props) {
+  const { onOpenSearch } = props;
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Pamu"
+        defaultTitle="Pamu"
         link={[
-          { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&amp;subset=vietnamese' },
+          { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&subset=vietnamese' },
         ]}
         meta={[
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <Header />
+          <Header onOpenSearch={onOpenSearch} />
           {props.children}
-          <Footer />
         </div>
       </MuiThemeProvider>
     </AppWrapper>
@@ -49,7 +40,13 @@ export function App(props) {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
+  onOpenSearch: PropTypes.func,
 };
 
-export default withProgressBar(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    onOpenSearch: () => dispatch(openSearch()),
+  };
+}
+export default connect(null, mapDispatchToProps)(App);

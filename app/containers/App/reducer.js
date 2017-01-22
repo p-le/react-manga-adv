@@ -16,6 +16,7 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  OPEN_SEARCH,
 } from './constants';
 
 // The initial state of the App
@@ -26,10 +27,13 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
+  isOpenSearch: false,
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case OPEN_SEARCH:
+      return state.update('isOpenSearch', (isOpenSearch) => !isOpenSearch);
     case LOAD_REPOS:
       return state
         .set('loading', true)

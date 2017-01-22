@@ -19,6 +19,7 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
+  OPEN_SEARCH,
 } from './constants';
 
 /**
@@ -32,6 +33,11 @@ export function loadRepos() {
   };
 }
 
+export function openSearch() {
+  return {
+    type: OPEN_SEARCH,
+  };
+}
 /**
  * Dispatched when the repositories are loaded by the request saga
  *

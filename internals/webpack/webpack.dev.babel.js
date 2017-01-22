@@ -47,7 +47,6 @@ module.exports = require('./webpack.base.babel')({
     presets: ['babel-preset-react-hmre'].map(require.resolve),
   },
 
-  // Emit a source map for easier debugging
   devtool: 'cheap-module-eval-source-map',
 
   performance: {

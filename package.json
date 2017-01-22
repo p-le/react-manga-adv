@@ -115,6 +115,8 @@
         "always-multiline"
       ],
       "import/imports-first": 0,
+      "jsx-boolean-value": 1,
+      "eslint no-underscore-dangle": "allow",
       "import/newline-after-import": 0,
       "import/no-dynamic-require": 0,
       "import/no-extraneous-dependencies": 0,
@@ -127,6 +129,10 @@
         {
           "SwitchCase": 1
         }
+      ],
+      "linebreak-style": [
+        2,
+        "unix"
       ],
       "jsx-a11y/aria-props": 2,
       "jsx-a11y/heading-has-content": 0,
@@ -225,6 +231,7 @@
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-helmet": "3.2.2",
+    "react-immutable-proptypes": "^2.1.0",
     "react-intl": "2.1.5",
     "react-redux": "4.4.6",
     "react-router": "3.0.0",

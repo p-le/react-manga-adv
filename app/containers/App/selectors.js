@@ -16,6 +16,11 @@ const makeSelectLoading = () => createSelector(
   (globalState) => globalState.get('loading')
 );
 
+const makeSelectIsOpenSearch = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('isOpenSearch')
+);
+
 const makeSelectError = () => createSelector(
   selectGlobal,
   (globalState) => globalState.get('error')
@@ -49,4 +54,5 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocationState,
+  makeSelectIsOpenSearch,
 };

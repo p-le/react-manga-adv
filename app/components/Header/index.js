@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import IconButton from 'material-ui/IconButton';
+import ActionSearch from 'material-ui/svg-icons/action/search';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
@@ -19,22 +21,24 @@ class Header extends React.Component {
     this.setState({ open: !this.state.open });
   }
   render() {
+    const { onOpenSearch } = this.props;
     return (
       <div>
         <AppBar
           title="Pamu"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.handleToogle}
+          iconElementRight={<IconButton><ActionSearch /></IconButton>}
+          onRightIconButtonTouchTap={onOpenSearch}
         />
         <Drawer open={this.state.open} docked={false} width={200} onRequestChange={(open) => this.setState({ open })}>
           <AppBar title="Pamu" />
-          <MenuItem containerElement={<Link to="/">{}</Link>}>
+          <MenuItem containerElement={<Link to="/">{}</Link>} onTouchTap={this.handleToogle}>
             <FormattedMessage {...messages.home} />
           </MenuItem>
-          <MenuItem containerElement={<Link to="/features">{}</Link>}>
+          <MenuItem containerElement={<Link to="/features">{}</Link>} onTouchTap={this.handleToogle}>
             <FormattedMessage {...messages.features} />
           </MenuItem>
-          <MenuItem containerElement={<Link to="/manga">{}</Link>}>
+          <MenuItem containerElement={<Link to="/manga">{}</Link>} onTouchTap={this.handleToogle}>
             <FormattedMessage {...messages.manga} />
           </MenuItem>
         </Drawer>
@@ -42,5 +46,10 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  onOpenSearch: PropTypes.func,
+};
+
 
 export default Header;
