@@ -7,6 +7,7 @@ injectGlobal`
     height: 100%;
     width: 100%;
     font-size: 62.5%;
+    overflow-x: hidden;
   }
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
