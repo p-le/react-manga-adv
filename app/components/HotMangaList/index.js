@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import Slider from 'react-slick';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
 const HotMangaList = () => {
   let settings = {
@@ -15,12 +16,46 @@ const HotMangaList = () => {
   };
   return (
     <Slider {...settings}>
-      <div><h3>1</h3></div>
-      <div><h3>2</h3></div>
-      <div><h3>3</h3></div>
-      <div><h3>4</h3></div>
-      <div><h3>5</h3></div>
-      <div><h3>6</h3></div>
+      <Card>
+        <CardHeader
+          title="AAAA"
+          subtitle="Subtitle"
+          actAsExpander={true}
+          showExpandableButton={true}
+        />
+      </Card>
+      <Card>
+        <CardHeader
+          title="CCCC"
+          subtitle="Subtitle"
+          actAsExpander={true}
+          showExpandableButton={true}
+        />
+      </Card>
+      <Card>
+        <CardHeader
+          title="DDDD"
+          subtitle="Subtitle"
+          actAsExpander={true}
+          showExpandableButton={true}
+        />
+      </Card>
+      <Card>
+        <CardHeader
+          title="EEEE"
+          subtitle="Subtitle"
+          actAsExpander={true}
+          showExpandableButton={true}
+        />
+      </Card>
+      <Card>
+        <CardHeader
+          title="FFFF"
+          subtitle="Subtitle"
+          actAsExpander={true}
+          showExpandableButton={true}
+        />
+      </Card>
     </Slider>
   );
 };
