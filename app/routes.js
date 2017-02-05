@@ -67,6 +67,25 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/chat',
+      name: 'chat',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ChatPage/reducer'),
+          import('containers/ChatPage/sagas'),
+          import('containers/ChatPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('chat', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '/manga/:mangaName',
       name: 'chooseManga',
       getComponent(nextState, cb) {

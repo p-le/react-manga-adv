@@ -18,4 +18,8 @@ export default defineMessages({
     id: 'boilerplate.components.Header.manga',
     defaultMessage: 'Manga',
   },
+  chat: {
+    id: 'boilerplate.components.Header.chat',
+    defaultMessage: 'Chat',
+  }
 });

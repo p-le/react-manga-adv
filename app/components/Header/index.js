@@ -41,6 +41,9 @@ class Header extends React.Component {
           <MenuItem containerElement={<Link to="/manga">{}</Link>} onTouchTap={this.handleToogle}>
             <FormattedMessage {...messages.manga} />
           </MenuItem>
+          <MenuItem containerElement={<Link to="/chat">{}</Link>} onTouchTap={this.handleToogle}>
+            <FormattedMessage {...messages.chat} />
+          </MenuItem>
         </Drawer>
       </div>
     );

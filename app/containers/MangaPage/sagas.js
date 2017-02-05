@@ -9,7 +9,7 @@ import {
 } from './actions';
 
 export function* fetchMangas() {
-  const apiUrl = 'http://localhost:10000/api/manga';
+  const apiUrl = 'http://153.121.44.242:10000/api/manga';
   try {
     const mangas = yield call(request, apiUrl);
     yield put(mangasLoaded(mangas));
@@ -19,7 +19,7 @@ export function* fetchMangas() {
 }
 
 export function* fetchChapters(action) {
-  const apiUrl = `http://localhost:10000/api/manga/${action.mangaName}`;
+  const apiUrl = `http://153.121.44.242:10000/api/manga/${action.mangaName}`;
   try {
     const chapters = yield call(request, apiUrl);
     yield put(chaptersLoaded(chapters));
@@ -29,7 +29,7 @@ export function* fetchChapters(action) {
 }
 
 export function* fetchChapter(action) {
-  const apiUrl = `http://localhost:10000/api/manga/${action.mangaName}/${action.chapterName}`;
+  const apiUrl = `http://153.121.44.242:10000/api/manga/${action.mangaName}/${action.chapterName}`;
   try {
     const chapter = yield call(request, apiUrl);
     yield put(chapterLoaded(chapter));
