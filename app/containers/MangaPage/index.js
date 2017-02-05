@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -8,7 +9,9 @@ import { browserHistory } from 'react-router';
 import styled from 'styled-components';
 import AutoComplete from 'material-ui/AutoComplete';
 import CircularProgress from 'material-ui/CircularProgress';
+
 import MangaList from 'components/MangaList';
+import HotMangaList from 'components/HotMangaList';
 import ChapterList from 'components/ChapterList';
 import Reader from 'components/Reader';
 import Loader from 'components/Loader';
@@ -102,6 +105,7 @@ export class MangaPage extends Component {
   render() {
     const { isLoadingMangas, isOpenSearch, params, mangas, chapters, currentChapter } = this.props;
     let content = '';
+    
     if (params.chapterName) {
       content = Object.keys(currentChapter).length === 0 ? (
         <Loader>
@@ -148,6 +152,7 @@ export class MangaPage extends Component {
             />
           ) : null
         }
+        <HotMangaList />
         { content }
       </Page>
     );
